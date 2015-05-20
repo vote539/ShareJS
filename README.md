@@ -96,9 +96,13 @@ server. As such, its transport agnostic. You can use
 [websockets](https://github.com/einaros/ws), or whatever you like. ShareJS
 requires the transport to:
 
-- Guarantee in-order message delivery. (**Danger danger socket.io does not guarantee this**)
-- Provide a websocket-like API on the client
+- Guarantee in-order message delivery.
+- Provide a websocket-like API on the client.
 - Provide a node object stream to the server to talk to a client.
+
+**Caution:** If using [socket.io](http://socket.io/), you need to manually implement an
+in-order message delivery mechanism.  See
+[issue #375](https://github.com/share/ShareJS/issues/375) for details.
 
 When a client times out, the server will throw away all information
 related to that client. When the client client reconnects, it will reestablish
